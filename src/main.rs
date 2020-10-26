@@ -3,6 +3,9 @@ use tokio::prelude::*;
 use tokio::net::{TcpListener, TcpStream};
 use tokio::io;
 use anyhow::Result;
+use prost::Message;
+
+
 #[tokio::main]
 async fn main() {
     // Bind the listener to the address
@@ -30,6 +33,6 @@ async fn process(socket: TcpStream) -> Result<()> {
         resp.append(&mut buf);
     } 
     println!("get resp: {:?}", String::from_utf8(resp));
-    
+    println!("{:?}", env!("OUT_DIR"));    
     Ok(())
 }
